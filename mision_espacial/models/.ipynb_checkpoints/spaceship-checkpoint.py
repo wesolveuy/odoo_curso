@@ -1,4 +1,5 @@
 from odoo import api, fields, models
+from odoo.exceptions import ValidationError,UserError
 
 class Spaceship(models.Model):
 
@@ -6,6 +7,7 @@ class Spaceship(models.Model):
     _description = "Space Mission Spaceship"
     
     #Fields definition
+    name = fields.Char(string='Vessel Name')
     active = fields.Boolean(default=True)    
     type = fields.Selection(selection=[('freighter','Freighter'),
                                        ('star_destroyer', 'Star Destroyer'),
@@ -24,3 +26,16 @@ class Spaceship(models.Model):
     fuel_type = fields.Selection(selection=[('solid_fuel','Solid Fuel'),
                                             ('liquid_fuel', 'Liquid Fuel')],
                                  string='Fuel Type',)
+
+    @api.onchange('capacity_passenger','length')
+    def _onchange_dimensions(self):
+        if self.capacity_passenger<=0:
+            raise UserError('La cantidad de pasajeros debe ser mayor que 0')
+        if self.length<=0:
+            raise UserError('El largo no puede ser menor que 0')
+            
+    @api.constrains('width','length')
+    def _check_width_less_length(self):
+        for record in self:
+            if record.width > record.length:
+                raise ValidationError(('Hey! The width can not be bigger than the length.')) 
