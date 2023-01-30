@@ -26,6 +26,12 @@ class Spaceship(models.Model):
     fuel_type = fields.Selection(selection=[('solid_fuel','Solid Fuel'),
                                             ('liquid_fuel', 'Liquid Fuel')],
                                  string='Fuel Type',)
+    
+    crew_ids = fields.Many2many(comodel_name='res.partner',
+                            string='Crew')
+    mission_ids = fields.One2many(comodel_name='mision_espacial.mission',
+                               inverse_name='spaceship_id')
+            
 
     @api.onchange('capacity_passenger','length')
     def _onchange_dimensions(self):
