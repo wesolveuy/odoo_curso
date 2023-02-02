@@ -3,7 +3,7 @@ from datetime import timedelta
 from odoo import api, fields, models
 
 class Mission(models.Model):
-    _name = "mision_espacial.mission"
+    _name = 'mision_espacial.mission'
     _description = "Space Missions"
     
     
@@ -14,6 +14,13 @@ class Mission(models.Model):
                                           ("3","3"),
                                           ("4","4"),
                                           ("5","5"),])
+    
+    type = fields.Selection(selection=[('supply_delivery','Supply Delivery'),
+                                   ('exploration', 'Exploration'),
+                                   ('war_efforts', 'War Efforts'),
+                                   ('transport', 'Transportation')],
+                        string='Mission Type',)
+    
     launch_date = fields.Datetime(string="Launch Date",
                                   default=fields.Date.today)
     duration = fields.Float(string='Duration',
