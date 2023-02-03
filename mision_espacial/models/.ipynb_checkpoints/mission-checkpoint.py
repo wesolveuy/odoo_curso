@@ -6,9 +6,15 @@ class Mission(models.Model):
     _name = 'mision_espacial.mission'
     _description = "Space Missions"
     
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     
-    active = fields.Boolean(default=True)
+     
     name = fields.Char(name='Mission Name')
+    active = fields.Boolean(default=True)
+    
+    
+    """Simple Fields"""
+ 
     priority = fields.Selection(selection=[("1","1"),
                                           ("2","2"),
                                           ("3","3"),
@@ -21,6 +27,9 @@ class Mission(models.Model):
                                    ('transport', 'Transportation')],
                         string='Mission Type',)
     
+    #captain_id = fields.Many2one(comodel_name='res.users',
+      #                          string='Captain')
+    
     launch_date = fields.Datetime(string="Launch Date",
                                   default=fields.Date.today)
     duration = fields.Float(string='Duration',
@@ -30,7 +39,22 @@ class Mission(models.Model):
                           inverse='_inverse_return_date',
                           store=True)
     
+    fuel_needed = fields.Float(string="Needed Fuel")
+    fuel_current = fields.Float(string="Current Fuel")
+    
+    status = fields.Selection(selection=[('in_progress', 'In Progress'),
+                                   ('blocked', 'blocked')])
+    
+    """Relational Fields"""
+    
     spaceship_id = fields.Many2one(comodel_name='mision_espacial.spaceship')
+    
+    project_ids = fields.One2many(comodel_name='project.project',
+                                 inverse_name='mission_id',
+                                 string='Projects')
+    
+    captain_id = fields.Many2one(comodel_name='res.users',
+                                string='Captain')
     
     @api.depends('launch_date', 'duration')
     def _compute_return_date(self):
