@@ -23,10 +23,13 @@
     'depends': ['base'],
     
     'data': [
-    
+        'security/ir.model.access.csv',
+        'security/academia_seguridad.xml'
     ],
     
-    'demo': [
+    'demo': [ 'demo/academy_demo.xml',
     
     ],
+     #Add license to remove License Warning
+    'license': 'OPL-1'
 }

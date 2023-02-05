@@ -1,0 +1,3 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+curso_admin,curso admin,model_academia_curso,group_academia_admin,1,1,1,1
+courso_read_all,curso read all,model_academia_curso,,1,0,0,0
