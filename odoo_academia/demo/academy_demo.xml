@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+            <record model="academia.curso" id="programacion_1">
+                <field name="nombre">Programacion 1</field>
+                <field name="descripcion">Introduccion a la programacion</field>
+                <field name="nivel">basico</field>
+            </record>
+        
+            <record model="academia.curso" id="programacion_2">
+                <field name="nombre">Programacion 2</field>
+                <field name="descripcion">
+                    Estructura de datos
+                    Tipos abstractos de datos
+                    Recursion
+                    Multiestructuras
+                </field>
+                <field name="nivel">intermedio</field>
+            </record>
+        
+            <record model="academia.curso" id="programacion_3">
+                <field name="nombre">Programacion 3</field>
+                <field name="descripcion">Algoritmos</field>
+                <field name="nivel">avanzado</field>
+            </record>
+        
+    </data>
+</odoo>
