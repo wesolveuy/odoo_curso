@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="curso_lista_action">
+            <field name="name">Curso</field>
+            <field name="res_model">academia.curso</field>
+            <field name="view_mode">tree,form,pivot</field>
+            <field name="help" type="html">
+                 <p class="o_view_nocontent_smiling_face">
+                    Crea el primer curso
+                </p>
+            </field>
+        </record>
+        
+        <menuitem name="Odoo Acedmy"
+                  id="menu_academia"
+                  sequence="1"/>
+        <menuitem id="menu_academia_sub" name="Odoo Academy" parent="menu_academia" sequence="2"/>
+        
+        <menuitem id="menu_academia_cursos" name="Cursos" parent="menu_academia_sub" sequence="3"
+                  action="curso_lista_action"/>
+            
+    </data>
+</odoo>

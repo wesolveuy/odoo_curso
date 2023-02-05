@@ -23,8 +23,11 @@
     'depends': ['base'],
     
     'data': [
+        'security/academia_seguridad.xml',
         'security/ir.model.access.csv',
-        'security/academia_seguridad.xml'
+        'views/academia_menuitems.xml',
+        'views/curso_view.xml',
+        
     ],
     
     'demo': [ 'demo/academy_demo.xml',
