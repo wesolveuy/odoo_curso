@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import api, fields, models
 
 class Curso(models.Model):
-    _name:'academia.curso'
-    _description:'Info Curso'
+    _name = 'academia.curso'
+    _description = 'Info Curso'
+    
+    
     
     nombre=fields.Char(string='Titulo',required='True')
     descripcion = fields.Text(string='Descripcion')
