@@ -1,7 +1,7 @@
 from xmlrpc import client
 
-url = 'https://october-technical-training-15-0-space-mission-6156500.dev.odoo.com'
-db = 'october-technical-training-15-0-space-mission-6156500'
+url = 'https://wesolveuy-odoo-curso-16-0-naveespacial-7147191.dev.odoo.com/'
+db = 'wesolveuy-odoo-curso-16-0-naveespacial-7147191'
 username = 'admin'
 password = 'admin'
 
@@ -30,7 +30,7 @@ new_spaceship = models.execute_kw(db, uid, password,
                                        'name': 'Millenium Falcon',
                                        'type': 'freighter',
                                        'model': 'YT-1300F light freighter',
-                                       'crew_capacity': 30,
+                                       'capacity_passenger': 30,
                                        'length': 114,
                                        'width': 94,
                                        'height': 26,
